@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1912" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1912" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IbO-YI-fIX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Geolarm-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Geolarm" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,11 +18,77 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R2u-yx-tcU">
+                                <rect key="frame" x="20" y="72" width="300" height="300"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="R2u-yx-tcU" secondAttribute="trailing" id="10K-dz-4aX"/>
+                            <constraint firstItem="R2u-yx-tcU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1U8-uP-Hm4"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="R2u-yx-tcU" secondAttribute="leading" id="2dT-Fe-JEf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R2u-yx-tcU" secondAttribute="trailing" id="2g9-HB-hxm"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="R2u-yx-tcU" secondAttribute="bottom" id="4WX-76-EHI"/>
+                            <constraint firstItem="R2u-yx-tcU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7jm-QT-2n4"/>
+                            <constraint firstItem="R2u-yx-tcU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ffv-DD-iVm"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="R2u-yx-tcU" secondAttribute="leading" id="K3J-Yn-dOd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R2u-yx-tcU" secondAttribute="trailing" id="U2Z-Na-jzi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R2u-yx-tcU" secondAttribute="trailing" id="atU-GB-KSe"/>
+                            <constraint firstItem="R2u-yx-tcU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kCI-EM-D4a"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="10K-dz-4aX"/>
+                                <exclude reference="1U8-uP-Hm4"/>
+                                <exclude reference="2dT-Fe-JEf"/>
+                                <exclude reference="2g9-HB-hxm"/>
+                                <exclude reference="7jm-QT-2n4"/>
+                                <exclude reference="K3J-Yn-dOd"/>
+                                <exclude reference="U2Z-Na-jzi"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Geolarm" id="8ZG-Kn-ELf">
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="tm7-QQ-mTO">
+                                <connections>
+                                    <action selector="locButton:" destination="BYZ-38-t0r" id="Da6-2E-Alp"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="cov-Qp-AFd"/>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="RiT-GU-VCg">
+                            <connections>
+                                <action selector="showSearchBar:" destination="BYZ-38-t0r" id="Y7B-Rv-F4N"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="R2u-yx-tcU" id="8X8-Vb-FsS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1228" y="321"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hhU-cK-XUC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IbO-YI-fIX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1s4-8t-s6h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9JO-yR-xQs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8C-cw-ghp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="418" y="321"/>
         </scene>
     </scenes>
 </document>
