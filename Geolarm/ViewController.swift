@@ -9,42 +9,54 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AVFoundation
+import AudioToolbox
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-    //comment for initial commit
     
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBAction func showSearchBar(sender: AnyObject) {
-        
+    @IBAction func playSoundTest(_ sender: AnyObject) {
+        AudioServicesPlaySystemSound(SystemSoundID(1304))
     }
+    
+    var resultSearchController: UISearchController? = nil
     
     
     var locationManager = CLLocationManager()
     let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
     let regionRadius: CLLocationDistance = 1000
-    func centerMapOnLocation(location: CLLocation) {
+    func centerMapOnLocation(_ location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-            regionRadius * 2.0, regionRadius * 2.0)
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    @IBAction func locButton(sender: AnyObject) {
-        locationManager.startUpdatingLocation()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier:"LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        let searchbar = resultSearchController!.searchBar
+        searchbar.sizeToFit()
+        searchbar.placeholder = "Search for destination"
+        navigationItem.titleView = resultSearchController!.searchBar
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
         
         locationManager.delegate = self
-        if CLLocationManager.authorizationStatus() == .NotDetermined || CLLocationManager.authorizationStatus() == .Restricted {
+        if CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .restricted {
             self.locationManager.requestAlwaysAuthorization()
         }
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation:CLLocation = locations[0]
         let long = userLocation.coordinate.longitude;
         let lat = userLocation.coordinate.latitude;
@@ -52,11 +64,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         centerMapOnLocation(newLocation)
         
         print(long, lat)
-        
-        //Do What ever you want with it
     }
-    func locationManager(manager: CLLocationManager,
-        didFailWithError error: ErrorType){
-            print(error)
+    func locationManager(_ manager: CLLocationManager,
+                         didFailWithError error: Error){
+        print(error)
     }
 }

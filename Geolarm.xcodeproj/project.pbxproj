@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0341BD3C1E35C3C000EB2854 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341BD3B1E35C3C000EB2854 /* LocationSearchTable.swift */; };
 		2F961AE81E3402D400FD14A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F961AE71E3402D400FD14A3 /* AppDelegate.swift */; };
 		2F961AEA1E3402D400FD14A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F961AE91E3402D400FD14A3 /* ViewController.swift */; };
 		2F961AED1E3402D400FD14A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F961AEB1E3402D400FD14A3 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0341BD3B1E35C3C000EB2854 /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		2F961AE41E3402D400FD14A3 /* Geolarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geolarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F961AE71E3402D400FD14A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F961AE91E3402D400FD14A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				2F961AF01E3402D400FD14A3 /* LaunchScreen.storyboard */,
 				2F961AF31E3402D400FD14A3 /* Info.plist */,
 				2F961B151E34045B00FD14A3 /* GeoModel.swift */,
+				0341BD3B1E35C3C000EB2854 /* LocationSearchTable.swift */,
 			);
 			path = Geolarm;
 			sourceTree = "<group>";
@@ -196,13 +199,17 @@
 				TargetAttributes = {
 					2F961AE31E3402D400FD14A3 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 96YCEMN4BV;
+						LastSwiftMigration = 0820;
 					};
 					2F961AF71E3402D500FD14A3 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 2F961AE31E3402D400FD14A3;
 					};
 					2F961B021E3402D500FD14A3 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 2F961AE31E3402D400FD14A3;
 					};
 				};
@@ -262,6 +269,7 @@
 				2F961AEA1E3402D400FD14A3 /* ViewController.swift in Sources */,
 				2F961AE81E3402D400FD14A3 /* AppDelegate.swift in Sources */,
 				2F961B161E34045B00FD14A3 /* GeoModel.swift in Sources */,
+				0341BD3C1E35C3C000EB2854 /* LocationSearchTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +409,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 96YCEMN4BV;
 				INFOPLIST_FILE = Geolarm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tlrwgnr.Geolarm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -412,10 +422,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 96YCEMN4BV;
 				INFOPLIST_FILE = Geolarm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tlrwgnr.Geolarm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -427,6 +439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tlrwgnr.GeolarmTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geolarm.app/Geolarm";
 			};
 			name = Debug;
@@ -439,6 +452,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tlrwgnr.GeolarmTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geolarm.app/Geolarm";
 			};
 			name = Release;
@@ -450,6 +464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tlrwgnr.GeolarmUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Geolarm;
 				USES_XCTRUNNER = YES;
 			};
@@ -462,6 +477,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tlrwgnr.GeolarmUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Geolarm;
 				USES_XCTRUNNER = YES;
 			};
@@ -486,6 +502,7 @@
 				2F961B0E1E3402D500FD14A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F961B0F1E3402D500FD14A3 /* Build configuration list for PBXNativeTarget "GeolarmTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +511,7 @@
 				2F961B111E3402D500FD14A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F961B121E3402D500FD14A3 /* Build configuration list for PBXNativeTarget "GeolarmUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +520,7 @@
 				2F961B141E3402D500FD14A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
