@@ -25,12 +25,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     let alertController = UIAlertController(title: "We're Here!", message: "You have arrived at your destination", preferredStyle: UIAlertControllerStyle.alert)
     
-//    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-//    {
-//        locationManager.stopUpdatingLocation()
-//        (result : UIAlertAction) -> Void in
-//        print("You pressed OK")
-//    }
+    //    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+    //    {
+    //        locationManager.stopUpdatingLocation()
+    //        (result : UIAlertAction) -> Void in
+    //        print("You pressed OK")
+    //    }
     
     func playAlarm(){
         AudioServicesPlaySystemSound(SystemSoundID(1304))
@@ -39,14 +39,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var resultSearchController: UISearchController? = nil
     var selectedPin: MKPlacemark? = nil
     
-    
+    var isFollowingUser = true
     
     var locationManager = CLLocationManager()
     let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
     let regionRadius: CLLocationDistance = 1000
     func centerMapOnLocation(_ location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
+                                                                  regionRadius, regionRadius )
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -80,7 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         alertController.addAction(okAction)
         
-//        locationManager.stopUpdatingLocation()
+        //        locationManager.stopUpdatingLocation()
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
@@ -91,21 +91,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let long = userLocation.coordinate.longitude;
         let lat = userLocation.coordinate.latitude;
         let newLocation = CLLocation(latitude: lat, longitude: long)
-        centerMapOnLocation(newLocation)
+        
+        if isFollowingUser{
+            centerMapOnLocation(userLocation)
+        }
         
         print(long, lat)
         if selectedPin != nil{
-            print("reached location!!!")
-//            print(selectedPin?.coordinate)
-//            print(newLocation.coordinate)
+            //            print(selectedPin?.coordinate)
+            //            print(newLocation.coordinate)
             let pinLocation = CLLocation(latitude: (selectedPin?.coordinate.latitude)!, longitude: (selectedPin?.coordinate.longitude)!)
-            if newLocation.distance(from: pinLocation) < 1000{
-                locationManager.stopUpdatingLocation()
+            if userLocation.distance(from: pinLocation) < 50{
+                print("reached location!!!")
+//                locationManager.stopUpdatingLocation()
                 playAlarm()
                 self.present(alertController, animated: true, completion: nil)
                 mapView.removeAnnotations(mapView.annotations)
             }
-//            locationManager.startUpdatingLocation()
+            //            locationManager.startUpdatingLocation()
         }
     }
     func locationManager(_ manager: CLLocationManager,
